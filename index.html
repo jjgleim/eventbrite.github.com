@@ -1,0 +1,270 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+
+  <style> 
+body {
+  background-image: url("https://evbdn.eventbrite.com/s3-s3/eventlogos/5064690/logohead2.png");
+  background-repeat: no-repeat;
+  background-position: -550px top;
+  height: 100%;
+    font-family:Arial, Helvetica, sans-serif;
+    color: #666;
+  font-size:12px;
+}
+ 
+h2 {
+    color: #005580;
+    padding-top:10px;
+}
+h1 {
+    margin-top:84px;
+    font-size:36px;
+    font-style:normal;
+    font-weight:200;
+    margin-bottom:0px;
+}
+a {
+   color: #E60;
+   text-decoration:none;
+}
+a:hover {
+   color: #005580;
+   text-decoration:underline;
+}
+#nav{
+   top: 90px;
+text-align:left;
+margin-right: 90%;
+margin-left: 15px;
+padding: 5px;
+padding-left: 15px;
+position: fixed;
+background-color: rgba(230, 230, 230, 0.7);
+-webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 12px;
+border: 2px solid #AAA; 
+width:90px;
+}
+ul{
+list-style:none;
+padding-left:0px;
+margin-left:0px;
+}
+#nav ul ul{
+padding-left:15px;
+margin-left:0px;
+}
+
+#page{
+    text-align:left;
+width: 700px;
+margin-right: auto;
+margin-left: 150px;
+margin-top: 50px;
+margin-bottom: 50px;
+}
+ 
+pre{
+text-align: left;
+display: block;
+overflow: auto;
+font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace;
+background: #FAFAFA;
+border: 1px solid #F2F2F2;
+border-left: 4px solid #F96;
+margin: 5px 0 10px 20px;
+padding: 10px;
+}
+code{
+text-align: left;
+display: block;
+overflow: auto;
+font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace;
+background: #FAFAFA;
+border: 1px solid #F2F2F2;
+border-left: 4px solid #F96;
+margin: 5px 0 10px 20px;
+padding: 10px;
+}
+
+#dashboardtitle {
+    width: 980px;
+    position: static;
+    top: 80px;
+    margin:auto auto;
+}
+ 
+#subhead1 {
+    width: 980px;
+    position:static;
+    top: 120px;
+    margin:auto;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-style: normal;
+    line-height: 18px;
+    font-weight: bolder;
+    color: #000;
+    display: block;
+    padding-bottom: 0px;
+    padding-top: 5px;
+}
+ 
+#subhead2 {
+    width: 325px;
+    float:left
+    position: relative;
+    top: 160px;
+    margin:auto;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-style: normal;
+    line-height: 18px;
+    font-weight: bolder;
+    color: #000;
+    display: block;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    padding-left:5px;
+    padding-right:5px;
+}
+ 
+ 
+#ntfrow {
+    width: 980px;
+    position:static;
+    top: 140px;
+    margin:auto;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-style: normal;
+    line-height: 18px;
+    font-weight: normal;
+    color: #F60;
+    display: block;
+    background-image: url(https://evbdn.eventbrite.com/s3-s3/eventlogos/5064690/repxtwocolors.png);
+    background-repeat: repeat-x;
+    background-position: center top;
+    border-top-width: 7px;
+    border-top-style: solid;
+    border-top-color: #ff7f00;
+    height: 65px;
+    padding-top: 1px;
+    padding-bottom: 5px;
+}
+ 
+#topmain {
+    background-color: #FFFFFF;
+    font-size: large;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 60px;
+    width: 990px;
+height:100%
+}
+#subtext{
+    font-style: italic;
+}
+.highlight{
+    font-weight:bold;
+    color: #005580;
+}
+ 
+</style> 
+  <script src="http://code.jquery.com/jquery-1.5.2.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <title>Eventbrite on github</title>
+</head> 
+<body> 
+  <center> 
+  <nav>
+  <div id="nav"> 
+    <ul>
+        <li> <a href="#overview">Overview</a> </li>
+        <li> <a href="#resources">Resources</a> </li>
+        <li> <a href="#libraries">Libraries</a> </li>
+          <ul>
+            <li><a href="#php">PHP</a></li>
+            <li><a href="#ruby">Ruby</a></li>
+            <li><a href="#python">Python</a></li>
+            <li><a href="#javascript">Javascript</a></li>
+            <li><a href="#dotnet">.NET</a></li>
+          </ul>
+        <li> <a href="#projects">Projects</a> </li>
+          <ul>
+            <li><a href="#wordpress">Wordpress</a></li>
+            <li><a href="#drupal">Drupal</a></li>
+          </ul>
+        <li> <a href="#best_practices" style="white-space:nowrap;">Best Practices</a> </li>
+    </ul>
+  </div>
+  </nav> 
+  <div id="page"> 
+    <h1>Eventbrite on Github</h1>
+    <span id="subtext">Open Source Projects powered by the Eventbrite API</span>
+    <hr/>
+    <h2 id="overview">Overview</h2>
+    <div>
+      <p>Whether you are interested in adding robust event management features to your existing site, or in building a portal to show the world that exciting things are happening all around them, the Eventbrite API can be your source for extrememly rich and relevant local data.</p> 
+      <p>This page provides information for developers who are interested in interacting with the Eventbrite API.  The code listed here is <i>not maintained or supported by Eventbrite</i>.  These projects are maintained by a community of 3rd party developers who would probably appreciate your help.  So, grab a fork and dig in!</p>
+    </div>
+
+    <h2 id="resources">Developer Resources</h2>
+    <div>
+      <p>The <a href="http://developer.eventbrite.com/getting-started/">quick-start guide</a> on <a href="http://developer.eventbrite.com">developer.eventbrite.com</a> is a great place to get started.  There, you can learn more information about our <a href="http://developer.eventbrite.com/doc/auth/">Authentication requirements</a>, request limits, and read through our <a href="http://developer.eventbrite.com/doc">API docs</a>.</p>
+      <p>If you still can't find what you are looking for, the Eventbrite developer forums contain many useful peices of information.  And, you can always <a href="http://developer.eventbrite.com/contact-us/">contact Eventbrite directly</a> with questions.</p>
+    </div>
+
+    <h2 id="libraries">Open Source Libraries and API Clients</h2>
+    <div>
+      <p>The following client libraries are excellent resources to help make Eventbrite integration quick and painless.  Most web programming languages already have a client available.  More are on the way.</p> 
+      <ul>
+        <li>
+          <p id="php"><span class="highlight">PHP</span> - <a href="https://github.com/ryanjarvinen/php-eventbrite">php-eventbrite</a></p>
+        </li>
+        <li>
+          <p id="ruby"><span class="highlight">Ruby</span> - <a href="https://github.com/therabidbanana/eventbright">EventBright.rb</a></p>
+        </li>
+        <li>
+          <p id="python"><span class="highlight">Python</span> - <a href="https://github.com/mtai/eventbrite">eventbrite.egg</a></p>
+        </li>
+        <li>
+          <p id="dotnet"><span class="highlight">.NET</span> - <a href="https://github.com/penguinboy/Eventbrite.NET">Eventbrite.NET</a> </p>
+        </li>
+        <!-- <li>
+          <p id="javascript"><span class="highlight">Javascript</span> - coming soon...</p>
+        </li> -->
+      </ul>
+    </div>
+
+    <h2 id="projects">Open Source plugins and other projects</h2>
+    <div>
+      <p>Looking for something a little more high-level?  A lot of great application plugins are also available.  Take a look at the <a href="http://developer.eventbrite.com/showcase/">Eventbrite App Showcase</a> to see if an existing plugin or project meets your needs.  The following projects are open source:</p>
+      <ul>
+        <li>
+          <p id="wordpress"><span class="highlight">Wordpress</span> - <a href="http://wordpress.org/extend/plugins/the-events-calendar/">Events Calendar on Wordpress</a> <a href="http://plugins.trac.wordpress.org/browser/the-events-calendar">[code]</a> 
+</p>
+        </li>
+        <li>
+          <p id="drupal"><span class="highlight">Drupal</span> - <a href="http://drupal.org/project/eventbrite">Eventbrite Drupal Module</a> <a href="http://drupalcode.org/project/eventbrite.git">[code]</a></p>
+        </li>
+      </ul>
+    </div>
+    
+    <h2 id="best_practices">Best Practices</h2>
+    <div>
+      <p>By using the Eventbrite API, you agree to the Eventbrite API terms of service: http://developer.eventbrite.com/terms/</p>
+      <p>Information on branding guidelines and other 3rd party requirements and limitations can be found <a href="http://developer.eventbrite.com/news/branding/">here</a>.</p>
+   </div>
+
+  </div> 
+  <div id="footer"></div>
+</center>
+</body> 
+</html>
