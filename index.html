@@ -175,6 +175,7 @@ height:100%
     font-weight:bold;
     color: #005580;
 }
+.best_list{list-style-type: disc; margin-left:30px; }
  
 </style> 
   <script src="http://code.jquery.com/jquery-1.5.2.js"></script> 
@@ -193,7 +194,6 @@ height:100%
             <li><a href="#php">PHP</a></li>
             <li><a href="#ruby">Ruby</a></li>
             <li><a href="#python">Python</a></li>
-            <li><a href="#javascript">Javascript</a></li>
             <li><a href="#dotnet">.NET</a></li>
           </ul>
         <li> <a href="#projects">Projects</a> </li>
@@ -259,10 +259,16 @@ height:100%
     
     <h2 id="best_practices">Best Practices</h2>
     <div>
-      <p>By using the Eventbrite API, you agree to the Eventbrite API terms of service: http://developer.eventbrite.com/terms/</p>
-      <p>Information on branding guidelines and other 3rd party requirements and limitations can be found <a href="http://developer.eventbrite.com/news/branding/">here</a>.</p>
+      <p>If you are working on an open-source Eventbrite API client, please keep the following best practices in mind as you build:
+        <ul class="best_list">
+          <li>Consider including documentation and usage examples - Great documentation can really help developers understand how you intend for your client code to be used.</li>
+          <li>Consider support for caching - Even though support for caching and secondary storage may vary per environment, consider adding some optional support for this feature.  It can greatly accelerate your application's response time, and help keep your request volume within Eventbrite's usage limits (default is 1000 requests per day).</li>
+          <li>Client functions that are named after API calls, and that directly generate API requests, should allow parameters to be passed by name or as key-value pairs whenever possible.  This best-practice should help ensure that users can refer to the <a href="http://developer.eventbrite.com/doc">Eventbrite API docs</a> for information about the expected use of these functions.</li>
+        </ul>
+      </p>
+      <p>If you are planning to use Eventbrite data in an application, please take a look at our <a href="http://developer.eventbrite.com/news/branding/">branding guidelines and other 3rd party application requirements</a>.</p>
+      <p>Developers using the Eventbrite API should review the <a href="http://developer.eventbrite.com/terms/">API terms of service</a>. By using the Eventbrite API, you are obligated to comply to the terms. </p>
    </div>
-
   </div> 
   <div id="footer"></div>
 </center>
