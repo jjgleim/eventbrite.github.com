@@ -5,6 +5,15 @@
   <meta name="keywords" content="eventbrite, github, API, events, git, open source, php, python, javascipt, ruby, .NET, dotnet, client, tickets, opensource, open-source, event management, registration, event, evented" /> 
   <meta name="robots" content="index, follow" /> 
 
+<meta property="og:title" content="Eventbrite on GitHub" /> 
+<meta property="og:type" content="website" /> 
+<meta property="og:url" content="http://eventbrite.github.com" /> 
+<meta property="og:image" content="http://evbdn.eventbrite.com/s3-s3/static/images/django/logos/eb-trans.png" /> 
+<meta property="og:site_name" content="Eventbrite.GitHub.com" /> 
+<meta property="og:description" content="Open Source Projects powered by the Eventbrite API"/>
+<meta property="fb:admins" content="592922696263,10150145136260261"/>
+<meta property="fb:app_id" content="28218816837"/>
+
   <style> 
 body {
   background-image: url("https://evbdn.eventbrite.com/s3-s3/eventlogos/5064690/logohead2.png");
@@ -266,7 +275,7 @@ height:100%
       <p>If you are working on an open-source Eventbrite API client, please keep the following best practices in mind as you build:
         <ul class="best_list">
           <li>Consider including documentation and usage examples - Great documentation can really help developers understand how you intend for your client code to be used.</li>
-          <li>Consider support for caching - Even though support for caching and secondary storage may vary per environment, consider adding some optional support for this feature.  It can greatly accelerate your application's response time, and help keep your request volume within Eventbrite's usage limits (default is 1000 requests per day).</li>
+          <li>Consider support for caching - Even though support for caching storage may vary per system, consider adding some optional support for this feature.  It can greatly accelerate your application's response time, and help keep your request volume within Eventbrite's usage limits (default is 1000 requests per day).</li>
           <li>Client functions that are named after API calls, and that directly generate API requests, should allow parameters to be passed by name or as key-value pairs whenever possible.  This best-practice should help ensure that users can refer to the <a href="http://developer.eventbrite.com/doc">Eventbrite API docs</a> for information about the expected use of these functions.</li>
         </ul>
       </p>
