@@ -285,7 +285,8 @@ height:100%
         <ul class="best_list">
           <li>Consider including documentation and usage examples - Great documentation can really help developers understand how you intend for your client code to be used.</li>
           <li>Consider support for caching - Even though support for caching storage may vary per system, consider adding some optional support for this feature.  It can greatly accelerate your application's response time, and help keep your request volume within Eventbrite's usage limits (default is 1000 requests per day).</li>
-          <li>Client functions that are named after API calls, and that directly generate API requests, should allow parameters to be passed by name or as key-value pairs whenever possible.  This best-practice should help ensure that users can refer to the <a href="http://developer.eventbrite.com/doc">Eventbrite API docs</a> for information about the expected use of these functions.</li>
+          <li>Client functions that are named after API calls, and that directly generate API requests, should allow parameters to be passed by name or as key-value pairs whenever possible.  The parameters should also be automatically urlencoded for your users.  This best-practice should help ensure that users can refer to the <a href="http://developer.eventbrite.com/doc">Eventbrite API docs</a> for information about the expected use of these functions.</li>
+          <li>API request parameters should be automatically urlencoded.  This is one of the most common sources of errors when dealing with the API.  You can save your users a lot of time and needless frustration by ensuring that their requests are properly urlencoded before being sent.</li>
         </ul>
       </p>
       <p>If you are planning to use Eventbrite data in an application, please take a look at our <a href="http://developer.eventbrite.com/news/branding/">branding guidelines</a> and other 3rd party application requirements.</p>
@@ -294,14 +295,11 @@ height:100%
 <h2 id="discussion">Discussion</h2>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'eventbrite-opensource'; // required: replace example with your forum shortname
 
-    // The following are highly recommended additional parameters. Remove the slashes in front to use.
     // var disqus_identifier = 'unique_dynamic_id_1234';
     var disqus_url = 'http://eventbrite.github.com';
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
