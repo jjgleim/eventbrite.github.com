@@ -15,6 +15,8 @@
 <meta property="fb:admins" content="592922696263,10150145136260261"/>
 <meta property="fb:app_id" content="28218816837"/>
 
+<link rel='stylesheet' href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/smoothness/jquery-ui.css" />
+
   <style> 
 body {
   background-image: url("https://evbdn.eventbrite.com/s3-s3/eventlogos/5064690/logohead2.png");
@@ -196,8 +198,8 @@ height:100%
 .best_list li{ margin-bottom:10px; }
  
 </style> 
-  <script src="http://code.jquery.com/jquery-1.5.2.js"></script> 
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <script src="http://code.jquery.com/jquery-1.6.1.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
   <title>Eventbrite on GitHub</title>
 </head> 
 <body> 
@@ -207,18 +209,21 @@ height:100%
     <ul>
         <li> <a href="#overview">Overview</a> </li>
         <li> <a href="#resources">Resources</a> </li>
-        <li> <a href="#libraries">Libraries</a> </li>
+        <li> <a href="#libraries">Libraries</a> 
           <ul>
             <li><a href="#php">PHP</a></li>
             <li><a href="#ruby">Ruby</a></li>
             <li><a href="#python">Python</a></li>
             <li><a href="#dotnet">.NET</a></li>
           </ul>
-        <li> <a href="#projects">Projects</a> </li>
+        </li>
+        <li> <a href="#examples">Examples</a> </li>
+        <li> <a href="#projects">Projects</a> 
           <ul>
             <li><a href="#wordpress">Wordpress</a></li>
             <li><a href="#drupal">Drupal</a></li>
           </ul>
+        </li>
         <li> <a href="#best_practices" style="white-space:nowrap;">Best Practices</a> </li>
         <li> <a href="#discussion" style="white-space:nowrap;">Discussion</a> </li>
     </ul>
@@ -260,6 +265,26 @@ height:100%
           <p id="javascript"><span class="highlight">Javascript</span> - coming soon...</p>
         </li> -->
       </ul>
+    </div>
+
+    <h2 id="examples">Example code</h2>
+    <div>
+      <p>These example scripts are here to illustrate a few simple API use-cases.  You can read through them to learn about the API, run them manually to carry out specific tasks, or even include them in a larger application that will help assist with event management automation.</p>
+      <div id='example-tabs'>
+        <ul class="projects_ul">
+          <li><a href="#js-examples">Javascript</a></li>
+          <li><a href="#php-examples">PHP</a></li>
+          <li><a href="#python-examples">Python</a></li>
+          <li><a href="#ruby-examples">Ruby</a></li>
+        </ul>
+
+        <div id="js-examples" >
+          <p><a href="https://github.com/jjulian/jquery-eventbrite">Display attendee list</a></p>
+        </div>
+        <div id="php-examples"><p>Examples needed, <a href="http://developer.eventbrite.com/contact-us/">submit one today</a>!</p></div>
+        <div id="python-examples"><p><a href="https://github.com/nycresistor/Grab-Bag/tree/master/EventBriteGcalConnector">Eventbrite GCal connector</a></p></div>
+        <div id="ruby-examples"><p><a href="https://gist.github.com/989893">Multi-event discount codes</a></p></div>
+      </div>
     </div>
 
     <h2 id="projects">Open Source plugins and other projects</h2>
@@ -328,20 +353,9 @@ height:100%
   })();
 
 </script>
+<script>
+    $(function() {
+        $( "#example-tabs" ).tabs();
+    });
+</script>
 
-<!-- SiteCatalyst code version: H.21.1.
-Copyright 1996-2010 Adobe, Inc. All Rights Reserved
-More info available at http://www.omniture.com --> 
-<script language="JavaScript" type="text/javascript"> 
-  var s_account="ebeventbriteproduction"
-</script> 
-<script language="JavaScript" type="text/javascript" src="http://www.eventbrite.com/static/js/min/production/s_code_eventbrite.js"></script> 
-<script language="JavaScript" type="text/javascript" src="http://www.eventbrite.com/static/js/min/production/js_omniture.js"></script> 
-<script type="text/javascript">//<![CDATA[
-s.pageName="developer: eventbrite.github.com"
-s.channel="developer"
-s.prop1="developer"
-s.prop2="developer"
-s.prop3="developer"
-s.prop4="category"
-s.t()//]]></script>
