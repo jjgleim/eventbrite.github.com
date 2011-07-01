@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="shortcut icon" href="http://evbdn.eventbrite.com/s3-production/35362ce/django/images/icons/favicon.ico" /> 
+  <link rel='stylesheet' href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.6.1.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="Eventbrite.jquery.js"></script>
+  <title>Eventbrite.jquery.js Test Examples</title>
+</head>
+<body>
+  <h1>Eventbrite.jquery.js Test Examples</h1>
+  <p><i>built using the <a href="http://github.com/ryanjarvinen/Eventbrite.jquery.js">Eventbrite jquery api client</a></i></p>
+  
+  <p id='target'>&nbsp;</p>
+  
+  <a href="http://developer.eventbrite.com/news/branding/"><img src="http://evbdn.eventbrite.com/s3-s3/static/images/django/logos/eb_powered.png"/></a>
+
+  <div style="display:none;" id="dialog-form" title="API Credentials"> 
+    <p class="validateTips">Please enter your Eventbrite API authentication keys:</p> 
+ 
+    <form> 
+      <label for="api_key"><a href="http://www.eventbrite.com/api/key/">api_key</a> (REQUIRED)</label> 
+      <input type="text" name="api_key" id="api_key" class="text ui-widget-content ui-corner-all" /> 
+      <br/>
+      <label for="user_key"><a href="http://www.eventbrite.com/userkeyapi">user_key</a> (OPTIONAL)</label> 
+      <input type="text" name="user_key" id="user_key" value="" class="text ui-widget-content ui-corner-all" /> 
+    </form> 
+  </div> 
+  
+
+</body>
+<script type="text/javascript">
+  $('document').ready(function(){
+    //Eventbrite users can request an API key on the following page:
+    // http://www.eventbrite.com/api/key/ (required)
+    //Each user can find their user_key on this page: 
+    // http://www.eventbrite.com/userkeyapi (only needed to update/access private data)
+    ////
+    ////  WARNING: A user_key provides priveledged access to all of a user's private data.  Keep it secret.  Keep it safe.
+    ////           Eventbrite does not recommend storing user_keys in client side source.
+    
+    $( "#dialog-form" ).dialog({
+      'autoOpen': true,
+      'height': 350,
+      'width': 400,
+      'modal': true,
+      'buttons': {
+        'Authenticate': function() {
+
+          // Eventbrite Client interaction example
+          Eventbrite($('#api_key').val(), $('#user_key').val(), function(eb_client){
+            // parameters to pass to the API
+            var search_params = {'city': "San Francisco", 'region':'CA'};
+            // make a client request, provide a callback that will handle the response data
+            eb_client.event_search( search_params, function(response){
+
+              console.log(response);
+              // Use jQuery to display the response data to the user
+              $('#target').html('');      
+              if( response.events && response.events.length )
+              {
+                $.each(response.events, function(i,eb_event){
+                  if( eb_event['event']){
+                    var event_html = '<p><a style="font-size:32px;" href="' + eb_event['event'].url + '"><img style="float:right;" src="' + ( eb_event['event'].logo || 'http://developer.eventbrite.com/wp-content/uploads/2010/10/powered_by.jpg' ) + '"/>' + eb_event['event'].title + '</a>' + eb_client.widget.ticket( eb_event['event'] ) + '</p><hr/>';
+                    $('#target').append( event_html );
+                  }
+                });
+              }
+            });
+          });
+          // Close the dialog after we collect the required authentication tokens
+          $( this ).dialog( "close" );
+        },
+        'Cancel': function() { $( this ).dialog( "close" ); }
+      }
+    });
+  });
+</script>
