@@ -11,10 +11,14 @@
 <body>
   <h1>Eventbrite.jquery.js Test Examples</h1>
   <p><i>built using the <a href="http://github.com/ryanjarvinen/Eventbrite.jquery.js">Eventbrite jquery api client</a></i></p>
+
+  <hr/>
   
-  <p id='target'>&nbsp;</p>
+  <div id='target'>&nbsp;</div>
   
-  <a href="http://developer.eventbrite.com/news/branding/"><img src="http://evbdn.eventbrite.com/s3-s3/static/images/django/logos/eb_powered.png"/></a>
+  <hr/>
+  
+  <a href="http://developer.eventbrite.com/"><img src="http://evbdn.eventbrite.com/s3-s3/static/images/django/logos/eb_powered.png"/></a>
 
   <div style="display:none;" id="dialog-form" title="API Credentials"> 
     <p class="validateTips">Please enter your Eventbrite API authentication keys:</p> 
@@ -49,7 +53,7 @@
         'Authenticate': function() {
 
           // Eventbrite Client interaction example
-          Eventbrite($('#api_key').val(), $('#user_key').val(), function(eb_client){
+          Eventbrite({'app_key': $('#api_key').val(), 'user_key': $('#user_key').val()}, function(eb_client){
             // parameters to pass to the API
             var search_params = {'city': "San Francisco", 'region':'CA'};
             // make a client request, provide a callback that will handle the response data
