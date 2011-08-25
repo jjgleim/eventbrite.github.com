@@ -200,6 +200,8 @@ height:100%
 </style> 
   <script src="http://code.jquery.com/jquery-1.6.1.js"></script> 
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/jquery.localscroll.js"></script>
   <title>Eventbrite on GitHub</title>
 </head> 
 <body> 
@@ -356,6 +358,8 @@ height:100%
 </script>
 <script>
   $(function() {
+    // on $(document).ready() ...
     $( "#example-tabs" ).tabs();
+    $.localScroll({hash:true});
   });
 </script>
