@@ -52,14 +52,14 @@ a:hover {
 text-align:left;
 margin-right: 90%;
 margin-left: 15px;
-padding-left: 15px;
+padding-left: 11px;
 position: fixed;
 background-color: rgba(230, 230, 230, 0.7);
 -webkit-border-radius: 12px;
 -moz-border-radius: 12px;
 border-radius: 12px;
 border: 2px solid #AAA; 
-width:90px;
+width:98px;
 font-size:smaller;
 }
 ul{
@@ -228,6 +228,7 @@ height:100%
           </ul>
         </li>
         <li> <a href="#best_practices" style="white-space:nowrap;">Best Practices</a> </li>
+        <li> <a href="#announcements" style="white-space:nowrap;">Announcements</a> </li>
         <li> <a href="#discussion" style="white-space:nowrap;">Discussion</a> </li>
     </ul>
   </div>
@@ -312,14 +313,48 @@ height:100%
       <p>If you are working on an open-source Eventbrite API client, please keep the following best practices in mind as you build:
         <ul class="best_list">
           <li>Consider including documentation and usage examples - Great documentation can really help developers understand how you intend for your client code to be used.</li>
-          <li>Consider support for caching - Even though support for caching storage may vary per system, consider adding some optional support for this feature.  It can greatly accelerate your application's response time, and help keep your request volume within Eventbrite's usage limits (default is 1000 requests per day).</li>
           <li>Client functions that are named after API calls, and that directly generate API requests, should allow parameters to be passed by name or as key-value pairs whenever possible.  The parameters should also be automatically urlencoded for your users.  This best-practice should help ensure that users can refer to the <a href="http://developer.eventbrite.com/doc">Eventbrite API docs</a> for information about the expected use of these functions.</li>
           <li>API request parameters should be automatically urlencoded.  This is one of the most common sources of errors when dealing with the API.  You can save your users a lot of time and needless frustration by ensuring that their requests are properly urlencoded before being sent.</li>
+          <li>Consider support for caching - Even though support for caching storage may vary per system, consider adding some optional support for this feature.  It can greatly accelerate your application's response time, and help keep your request volume within Eventbrite's usage limits (default is 1000 requests per day).</li>
         </ul>
       </p>
       <p>If you are planning to use Eventbrite data in an application, please take a look at our <a href="http://developer.eventbrite.com/news/branding/">branding guidelines</a> and other 3rd party application requirements.</p>
       <p>Developers using the Eventbrite API should review the <a href="http://developer.eventbrite.com/terms/">API terms of service</a>. By using the Eventbrite API, you are obligated to comply to the terms. </p>
    </div>
+<h2 id="announcements">Announcements</h2>
+<div id='twitter_widget' style='width:700px;'>
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 'auto',
+  height: 300,
+  theme: {
+    shell: {
+      background: '#005580',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#666666',
+      links: '#ee6700'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    behavior: 'all'
+  }
+}).render().setUser('EventbriteAPI').start();
+</script>
+</div>
 <h2 id="discussion">Discussion</h2>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
