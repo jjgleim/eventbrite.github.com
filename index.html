@@ -15,7 +15,6 @@
 <meta property="fb:admins" content="592922696263,10150145136260261"/>
 <meta property="fb:app_id" content="28218816837"/>
 
-<link rel='stylesheet' href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/smoothness/jquery-ui.css" />
 
   <style> 
 body {
@@ -199,7 +198,6 @@ height:100%
  
 </style> 
   <script src="http://code.jquery.com/jquery-1.6.1.js"></script> 
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
   <script src="js/jquery.scrollTo.js"></script>
   <script src="js/jquery.localscroll.js"></script>
   <title>Eventbrite on GitHub</title>
@@ -254,41 +252,40 @@ height:100%
       <p>The following client libraries are excellent resources to help make Eventbrite integration quick and painless.  Most web programming languages already have an API client available.  Is your language of choice missing from the list?  Let us know!</p> 
       <ul class="projects_ul">
         <li>
-          <p id="javascript"><span class="highlight">Javascript</span> - <a href="http://github.com/ryanjarvinen/Eventbrite.jquery.js">Eventbrite.jquery.js</a>, <a href="http://github.com/ryanjarvinen/eventbrite.npm">eventbrite.npm</a></p>
+          <p><span id="javascript" class="highlight">Javascript</span> - <a href="http://github.com/ryanjarvinen/Eventbrite.jquery.js">Eventbrite.jquery.js</a>, <a href="http://github.com/ryanjarvinen/eventbrite.npm">eventbrite.npm</a></p>
         </li>
         <li>
-          <p id="php"><span class="highlight">PHP</span> - <a href="http://github.com/ryanjarvinen/eventbrite.php">eventbrite.php</a>, <a href="http://github.com/shiflett/eventbrite">eventbrite</a> </p>
+          <p><span id="php" class="highlight">PHP</span> - <a href="http://github.com/ryanjarvinen/eventbrite.php">eventbrite.php</a>, <a href="http://github.com/shiflett/eventbrite">eventbrite</a> </p>
         </li>
         <li>
-          <p id="ruby"><span class="highlight">Ruby</span> - <a href="https://github.com/ryanjarvinen/eventbrite-client.rb">eventbrite-client.rb</a>, <a href="https://github.com/therabidbanana/eventbrite">Eventbrite.rb</a></p>
+          <p><span id="ruby" class="highlight">Ruby</span> - <a href="https://github.com/ryanjarvinen/eventbrite-client.rb">eventbrite-client.rb</a>, <a href="https://github.com/therabidbanana/eventbrite">Eventbrite.rb</a></p>
         </li>
         <li>
-          <p id="python"><span class="highlight">Python</span> - <a href="https://github.com/eventbrite/eventbrite-client-py">eventbrite.py</a></p>
+          <p><span id="python" class="highlight">Python</span> - <a href="https://github.com/eventbrite/eventbrite-client-py">eventbrite.py</a></p>
         </li>
         <li>
-          <p id="dotnet"><span class="highlight">.NET</span> - <a href="https://github.com/penguinboy/Eventbrite.NET">Eventbrite.NET</a> </p>
+          <p><span id="dotnet" class="highlight">.NET</span> - <a href="https://github.com/penguinboy/Eventbrite.NET">Eventbrite.NET</a> </p>
         </li>
       </ul>
     </div>
 
-    <h2 id="examples">Example code</h2>
+    <h2 id="examples">Example Scripts</h2>
     <div>
       <p>These example scripts are here to illustrate a few simple API use-cases.  You can read through them to learn about the API, run them manually to carry out specific tasks, or mix them into a larger application that will help assist with event management automation.</p>
-      <div id='example-tabs'>
-        <ul class="projects_ul">
-          <li><a href="#js-examples">Javascript</a></li>
-          <li><a href="#php-examples">PHP</a></li>
-          <li><a href="#python-examples">Python</a></li>
-          <li><a href="#ruby-examples">Ruby</a></li>
-        </ul>
-
-        <div id="js-examples" >
-          <p><a href='attendee-list-example.html'>attendee-list-example.html</a>, <a href='organizer-widget-example.html'>organizer event list</a>, <a href="http://eventbrite.github.com/javascript-examples.html">Eventbrite widgets</a>, <a href="https://github.com/jjulian/jquery-eventbrite">Display attendee list</a></p>
-        </div>
-        <div id="php-examples"><p><a href="https://gist.github.com/1105464">discount code recipe</a>, <a href="https://github.com/ryanjarvinen/eventbrite.php/blob/master/examples/attendee-list-example.php">attendee list example</a></p></div>
-        <div id="python-examples"><p><a href="https://github.com/nycresistor/Grab-Bag/tree/master/EventBriteGcalConnector">Eventbrite GCal connector</a></p></div>
-        <div id="ruby-examples"><p><a href="https://gist.github.com/989893">Multi-event discount codes</a></p></div>
-      </div>
+      <ul class="projects_ul">
+        <li id="js-examples" >
+          <p><span class='highlight'>Javascript Examples</span> - <a href='attendee-list-example.html'>attendee list example</a>, <a href='organizer-widget-example.html'>organizer event list</a>, <a href="http://eventbrite.github.com/javascript-examples.html">Eventbrite widgets</a></p>
+        </li>
+        <li id="php-examples">
+          <p><span class='highlight'>PHP Examples</span> - <a href="https://gist.github.com/1105464">discount code recipe</a>, <a href="https://github.com/ryanjarvinen/eventbrite.php/blob/master/examples/attendee-list-example.php">attendee list example</a></p>
+        </li>
+        <li id="python-examples">
+          <p><span class='highlight'>Python Examples</span> - <a href="https://github.com/nycresistor/Grab-Bag/tree/master/EventBriteGcalConnector">Eventbrite GCal connector</a></p>
+        </li>
+        <li id="ruby-examples">
+          <p><span class='highlight'>Ruby Examples</span> - <a href="https://gist.github.com/989893">Multi-event discount codes</a></p>
+        </li>
+      </ul>
     </div>
 
     <h2 id="projects">Open Source plugins and other projects</h2>
@@ -394,7 +391,6 @@ new TWTR.Widget({
 <script>
   $(function() {
     // on $(document).ready() ...
-    $( "#example-tabs" ).tabs();
     $.localScroll({hash:true});
   });
 </script>
