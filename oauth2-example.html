@@ -4,7 +4,7 @@
   <link rel="shortcut icon" href="http://evbdn.eventbrite.com/s3-production/35362ce/django/images/icons/favicon.ico" /> 
   <link rel='stylesheet' href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/smoothness/jquery-ui.css" />
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.js"></script> 
-  <script type="text/javascript" src="Eventbrite.jquery.js"></script>
+  <script type="text/javascript" src="https://raw.github.com/ryanjarvinen/Eventbrite.jquery.js/master/Eventbrite.jquery.js"></script>
   <title>Eventbrite.jquery.js Test Examples</title>
 </head>
 <body>
@@ -20,8 +20,10 @@
   //  For this example to work on YOUR host:
   //  1. You will need to update your API Key's redirect_uri, pointing it to the public url where your Eventbrite Login Widget is available.
   //  2. You will also need to set YOUR app_key on the following line:
-  Eventbrite.prototype.widget.login({'app_key': 'GBJ3VLMXCMWUBVFLOA'}, function(widget_html){
-    $('#target').html(widget_html);
+  $('document').ready(function(){
+    Eventbrite.prototype.widget.login({'app_key': 'GBJ3VLMXCMWUBVFLOA'}, function(widget_html){
+      $('#target').html(widget_html);
+    });
   });
 </script>
 
