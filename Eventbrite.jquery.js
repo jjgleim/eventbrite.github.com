@@ -180,7 +180,11 @@ Eventbrite.prototype = {
   },
   'data': {
     'getAccessToken': function ( ){
-      return localStorage['eb_access_token'];
+      if( localStorage['eb_access_token'] !== undefined ){
+        return localStorage['eb_access_token'];
+      }else{
+        return undefined;
+      }
     },
     'saveAccessToken': function ( token ){
       localStorage['eb_access_token'] = token;
