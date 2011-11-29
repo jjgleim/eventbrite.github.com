@@ -32,7 +32,7 @@ var Eventbrite = function () {
 }
 
 Eventbrite.prototype = {
-  'api_host': "https://developer.eventbrite.com/json/",
+  'api_host': "http://developer.eventbrite.com/json/",
   'api_methods': ['discount_new', 'discount_update', 'event_copy', 'event_get', 'event_list_attendees', 'event_list_discounts', 'event_new', 'event_search', 'event_update', 'organizer_list_events', 'organizer_new', 'organizer_update', 'organizer_get', 'payment_update', 'ticket_new', 'ticket_update', 'user_get', 'user_list_events', 'user_list_organizers', 'user_list_tickets', 'user_list_venues', 'user_new', 'user_update', 'venue_new', 'venue_get', 'venue_update'],
   'request': function ( method, params, cb ) {
     var auth_headers = {};
