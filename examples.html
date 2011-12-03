@@ -13,7 +13,7 @@
     //  1. You will need to update your API Key's redirect_uri, pointing it to the public url where your Eventbrite Login Widget is available.
     //  2. You will also need to set YOUR app_key on the following line:
     //  3. Eventbrite recommends that you keep your users' access_tokens secret. Do not expose them to other users.
-    $('document').ready(function(){
+    $(document).ready(function(){
       // for more information about how to use this widget see https://github.com/ryanjarvinen/Eventbrite.jquery.js/blob/master/OAUTH2-README.md
       Eventbrite.prototype.widget.login({
         'app_key': 'GBJ3VLMXCMWUBVFLOA',
@@ -22,7 +22,6 @@
 
         // Place the resulting Eventbrite login widget code somewhere on your page.
         // This example places the content into an element marked with class="eb_login_box"
-        console.log(strings);
         $(".eb_login_loading").hide();
         if( strings['user_name']   !== undefined &&
           strings['user_email']  !== undefined ){
@@ -83,12 +82,26 @@
             <li><a href="#organizers">Organizer Profiles</a></li>
             <li><a href="#tickets">Tickets</a></li>
             <li><a href="#account">Account</a></li>
+            <li data-icon="search"><a href="#search">Search Events</a></li>
         </ul>
     </div>
 
     <div style='text-align:right;' data-role="footer" data-theme="d">
         <a href="http://developer.eventbrite.com/"><img src="http://evbdn.eventbrite.com/s3-s3/static/images/django/logos/eb_powered.png"/></a>
     </div><!-- /footer -->
+</div><!-- /page -->
+
+<div id="search" data-role="page">
+
+    <div data-iconpos="right" data-role="header">
+        <a href="#home" data-rel="back" data-direction="reverse" data-role="button" data-theme="b" data-icon='arrow-l'>Back</a>
+        
+        <h1>Search Events</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">   
+        <p><i>Coming Soon...</i></p>
+    </div><!-- /content -->
 </div><!-- /page -->
 
 <div id="organizers" data-role="page">
