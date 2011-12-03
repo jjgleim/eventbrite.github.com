@@ -40,6 +40,11 @@
         }  
       });
     });
+    $('.eb_logout a').bind('click', function(){ 
+      Eventbrite.prototype.data.deleteAccessToken(); 
+      $('.eb_user_info').hide();
+      $('.eb_login_btn').show();
+    });
     
   </script>
   <style type="text/css">
@@ -101,7 +106,7 @@
               <span class='eb_user_email'>api@eventbrite.com</span>
             </p>
             <p class='eb_logout'>
-              <a data-role='button' data-icon='delete' href='#' onclick="function(){Eventbrite.prototype.data.deleteAccessToken(); $('.eb_user_info').hide();$('.eb_logout_btn').show(); }">Logout</a>
+              <a data-role='button' data-icon='delete' href='#'>Logout</a>
             </p>
           </div>
           <p class='eb_login_error' style='display:none;'>login error</p>
@@ -132,7 +137,7 @@
               <span class='eb_user_email'>api@eventbrite.com</span>
             </p>
             <p class='eb_logout'>
-              <a data-role='button' data-icon='delete' href='#' onclick="function(){Eventbrite.prototype.data.deleteAccessToken(); $('.eb_user_info').hide();$('.eb_logout_btn').show(); }">Logout</a>
+              <a data-role='button' data-icon='delete' href='#'>Logout</a>
             </p>
           </div>
           <p class='eb_login_error' style='display:none;'>login error</p>
