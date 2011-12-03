@@ -30,13 +30,15 @@
           $(".eb_user_email").html(strings.user_email);
           $(".eb_user_info").show();
           $(".eb_logout").show();
-        }else if( strings['oauth_link'] !== undefined ){
-          $(".eb_login_btn a").attr('href', strings.oauth_link);
+        }else{
           $(".eb_login_btn").show();
           if(strings['login_error'] !== undefined){
             $(".eb_login_error").html(strings['login_error']);
             $(".eb_login_error").show();
           }
+        }  
+        if( strings['oauth_link'] !== undefined ){
+          $(".eb_login_btn a").attr('href', strings.oauth_link );
         }  
       });
       $('.eb_logout a').bind('click', function(){ 
