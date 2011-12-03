@@ -39,13 +39,12 @@
           }
         }  
       });
+      $('.eb_logout a').bind('click', function(){ 
+        Eventbrite.prototype.data.deleteAccessToken(); 
+        $('.eb_user_info').hide();
+        $('.eb_login_btn').show();
+      });
     });
-    $('.eb_logout a').bind('click', function(){ 
-      Eventbrite.prototype.data.deleteAccessToken(); 
-      $('.eb_user_info').hide();
-      $('.eb_login_btn').show();
-    });
-    
   </script>
   <style type="text/css">
     .eb_login_btn a{ 
