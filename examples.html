@@ -15,20 +15,50 @@
     //  3. Eventbrite recommends that you keep your users' access_tokens secret. Do not expose them to other users.
     $('document').ready(function(){
       // for more information about how to use this widget see https://github.com/ryanjarvinen/Eventbrite.jquery.js/blob/master/OAUTH2-README.md
-      Eventbrite.prototype.widget.login({'app_key': 'GBJ3VLMXCMWUBVFLOA'}, function(widget_html){
+      Eventbrite.prototype.widget.login({
+        'app_key': 'GBJ3VLMXCMWUBVFLOA',
+        'renderer': 'disabled',
+      }, function(strings){
+
         // Place the resulting Eventbrite login widget code somewhere on your page.
         // This example places the content into an element marked with class="eb_login_box"
-        $('.eb_login_box').html(widget_html);
+        console.log(strings);
+        $(".eb_login_loading").hide();
+        if( strings['user_name']   !== undefined &&
+          strings['user_email']  !== undefined ){
+          $(".eb_user_name").html(strings.user_name);
+          $(".eb_user_email").html(strings.user_email);
+          $(".eb_user_info").show();
+          $(".eb_logout").show();
+        }else if( strings['oauth_link'] !== undefined ){
+          $(".eb_login_btn a").attr('href', strings.oauth_link);
+          $(".eb_login_btn").show();
+          if(strings['login_error'] !== undefined){
+            $(".eb_login_error").html(strings['login_error']);
+            $(".eb_login_error").show();
+          }
+        }  
       });
     });
+    
   </script>
   <style type="text/css">
-    .eb_login_box{
+    .eb_login_btn a{ 
+      width:162px;
+      height:24px;
+      display:block;
+      text-indent: -99999px;
+      background: url('http://evbdn.eventbrite.com/s3-s3/static/images/developer/oauth2/oauth-connect-btns.png') top;
+    }
+    .eb_login_btn a:hover { background-position: 0px 24px;} 
+    .eb_logout {text-align:right;}
+    .eb_login_box {
       margin:  5px auto;
       border:  1px solid lightGrey;
       width:   162px;
       padding: 0px 16px;
     }
+    .eb_user_name{text-align:center;}
   </style>
   <title>Eventbrite Developer Examples</title>
 </head>
@@ -57,12 +87,29 @@
 
 <div id="setup" data-role="page">
 
-    <div data-theme="e" data-role="header">
+    <div data-theme="b" data-iconpos="right" data-role="header">
         <h1>Account Setup</h1>
     </div><!-- /header -->
 
     <div data-role="content">   
-      <div class='eb_login_box'> Loading...  </div>
+      <div class='eb_login_box'>
+        <div class='eb_login_widget'>
+          <div class='eb_login_loading'> Loading...  </div>
+          <div class='eb_user_info' style='display:none;'>
+            <p>You are logged in as:<br/>
+              <span class='eb_user_name'>Anonymous</span><br/>
+              <span class='eb_user_email'>api@eventbrite.com</span>
+            </p>
+            <p class='eb_logout'>
+              <a data-role='button' data-icon='delete' href='#' onclick="function(){Eventbrite.prototype.data.deleteAccessToken(); $('.eb_user_info').hide();$('.eb_logout_btn').show(); }">Logout</a>
+            </p>
+          </div>
+          <p class='eb_login_error' style='display:none;'>login error</p>
+          <p class='eb_login_btn' style='display:none;'>
+            <a href='#'>Connect to Eventbrite</a>
+          </p>
+        </div>
+      </div>
     </div><!-- /content -->
 
 </div><!-- /page -->
@@ -76,7 +123,25 @@
     </div><!-- /header -->
 
     <div data-role="content">   
-      <div class='eb_login_box'> Loading...  </div>
+      <div class='eb_login_box'>
+        <div class='eb_login_widget'>
+          <div class='eb_login_loading'> Loading...  </div>
+          <div class='eb_user_info' style='display:none;'>
+            <p>You are logged in as:<br/>
+              <span class='eb_user_name'>Anonymous</span><br/>
+              <span class='eb_user_email'>api@eventbrite.com</span>
+            </p>
+            <p class='eb_logout'>
+              <a data-role='button' data-icon='delete' href='#' onclick="function(){Eventbrite.prototype.data.deleteAccessToken(); $('.eb_user_info').hide();$('.eb_logout_btn').show(); }">Logout</a>
+            </p>
+          </div>
+          <p class='eb_login_error' style='display:none;'>login error</p>
+          <p class='eb_login_btn' style='display:none;'>
+            <a href='#'>Connect to Eventbrite</a>
+          </p>
+        </div>
+      </div>
+
     </div><!-- /content -->
 
 </div><!-- /page -->
