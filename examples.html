@@ -39,17 +39,107 @@
           $(".eb_login_btn a").attr('href', strings.oauth_link );
         }  
       });
+
+      //Set up a custom logout handler
       $('.eb_logout a').bind('click', function(){ 
         Eventbrite.prototype.data.deleteAccessToken(); 
         $('.eb_user_info').hide();
         $('.eb_login_btn').show();
       });
+
+      //Populate this user's event list -
       Eventbrite(function(eb){
-        eb.user_list_events( function(response){
-          $('#myevents').html( '<ul data-role="listview" data-theme="g">' + eb.utils.eventList( response, function(evnt){return '<li>' + evnt.title + '</li>'}) + '</ul>');
+        eb.user_list_events( {'do_not_display': "venue,logo,style,organizer,password,box_header_text_color,category,tags,tickets,link_color,box_background_color,box_border_color,timezone,description,background_color,text_color"}, function(response){
+          var page = $( '#events' ),
+          // Get the header for the page.
+          header = page.children( ":jqmData(role=header)" ),
+          // Get the content area element for the page.
+          content = page.children( ":jqmData(role=content)" );
+          if(response['events'] !== undefined){
+            var num = response.events.length;
+            var evnt_list = ['<ul data-role="listview" data-theme="c">'];
+            for(var x = 0; x < num; x +=1){
+              evnt_list.push('<li><a href="#events/' + response.events[x]['event'].id + '">' + response.events[x]['event'].title + '</a></li>'); 
+            }
+            evnt_list.push( '</ul>' );
+            evnts_html = evnt_list.join("\n");
+          }else{
+            events_html = '<div>No events were found for this account</div>';
+          }
+          content.html( evnts_html );
+          // Pages are lazily enhanced. call page() to make sure it is
+          // enhanced before we attempt to enhance the listview markup.
+          // Subsequent calls to page() are ignored since a page/widget
+          // can only be enhanced once.
+          page.page();
+          // Enhance the listview we just injected.
+          content.find( ":jqmData(role=listview)" ).listview();
+        });
+      });
+      // Populate this user's list of organizer accounts - 
+      Eventbrite(function(eb){
+        eb.user_list_organizers( function(response){
+          var page = $( '#organizers' ),
+          // Get the header for the page.
+          // Get the content area element for the page.
+          content = page.children( ":jqmData(role=content)" );
+          if(response['organizers'] !== undefined){
+            var num = response.organizers.length;
+            var organizer_list = ['<ul data-role="listview" data-theme="c">'];
+            for(var x = 0; x < num; x +=1){
+              organizer_list.push('<li><a href="#organizers/' + response.organizers[x]['organizer'].id + '">' + response.organizers[x]['organizer'].name + '</a></li>'); 
+            }
+            organizer_list.push( '</ul>' );
+            organizers_html = organizer_list.join("\n");
+          }else{
+            organizers_html = '<div>No organizer accounts were found for this user</div>';
+          }
+          content.html( organizers_html );
+          // Pages are lazily enhanced. call page() to make sure it is
+          // enhanced before we attempt to enhance the listview markup.
+          // Subsequent calls to page() are ignored since a page/widget
+          // can only be enhanced once.
+          page.page();
+          // Enhance the listview we just injected.
+          content.find( ":jqmData(role=listview)" ).listview();
+        });
+      });
+      // Populate this users list of Tickets
+      Eventbrite(function(eb){
+        eb.user_list_tickets( function(response){
+          var page = $( '#tickets' ),
+          // Get the header for the page.
+          // Get the content area element for the page.
+          content = page.children( ":jqmData(role=content)" );
+          console.log(response);
+          if(response['user_tickets'] !== undefined){
+            var num = response.user_tickets[1].orders.length;
+            var ticket_list = ['<ul data-role="listview" data-theme="c">'];
+            for(var x = 0; x < num; x +=1){
+              ticket_list.push('<li><a href="#tickets/' + response.user_tickets[1].orders[x]['order']['event'].id + '">' + response.user_tickets[1].orders[x]['order']['event'].title + '</a></li>'); 
+            }
+            ticket_list.push( '</ul>' );
+            tickets_html = ticket_list.join("\n");
+          }else{
+            tickets_html = '<div>No tickets were found for this user</div>';
+          }
+          content.html( tickets_html );
+          // Pages are lazily enhanced. call page() to make sure it is
+          // enhanced before we attempt to enhance the listview markup.
+          // Subsequent calls to page() are ignored since a page/widget
+          // can only be enhanced once.
+          page.page();
+          // Enhance the listview we just injected.
+          content.find( ":jqmData(role=listview)" ).listview();
         });
       });
     });
+    //$( document ).delegate("#events", "pagebeforecreate", function() {
+    //  alert('A page with an ID of "aboutPage" is about to be created by jQuery Mobile!');
+    //});
+    //$( document ).delegate("#events", "pagecreate", function() {
+    //  alert('A page with an ID of "aboutPage" was just created by jQuery Mobile!');
+    //});
   </script>
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"> </script>
   <style type="text/css">
@@ -98,16 +188,16 @@
     </div><!-- /footer -->
 </div><!-- /page -->
 
-<div id="search" data-role="page">
+<div id="events" data-role="page">
 
-    <div data-icon="search" data-iconpos="right" data-role="header">
+    <div data-iconpos="right" data-role="header">
         <a href="#home" data-rel="back" data-direction="reverse" data-role="button" data-theme="b" data-icon='arrow-l'>Back</a>
         
-        <h1>Find Events</h1>
+        <h1>My Events</h1>
     </div><!-- /header -->
 
     <div data-role="content">   
-        <p><i>Coming Soon...</i></p>
+        <div id='myevents'>Loading...</div>
     </div><!-- /content -->
 </div><!-- /page -->
 
@@ -134,19 +224,6 @@
 
     <div data-role="content">   
         <p><i>Coming Soon...</i></p>
-    </div><!-- /content -->
-</div><!-- /page -->
-
-<div id="events" data-role="page">
-
-    <div data-iconpos="right" data-role="header">
-        <a href="#home" data-rel="back" data-direction="reverse" data-role="button" data-theme="b" data-icon='arrow-l'>Back</a>
-        
-        <h1>My Events</h1>
-    </div><!-- /header -->
-
-    <div data-role="content">   
-        <div id='myevents'>Loading...</div>
     </div><!-- /content -->
 </div><!-- /page -->
 
@@ -210,4 +287,18 @@
     </div><!-- /content -->
 
 </div><!-- /page -->
+
+<div id="search" data-role="page">
+
+    <div data-icon="search" data-iconpos="right" data-role="header">
+        <a href="#home" data-rel="back" data-direction="reverse" data-role="button" data-theme="b" data-icon='arrow-l'>Back</a>
+        
+        <h1>Find Events</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">   
+        <p><i>Coming Soon...</i></p>
+    </div><!-- /content -->
+</div><!-- /page -->
+
 </body>
