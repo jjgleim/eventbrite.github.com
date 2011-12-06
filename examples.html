@@ -5,6 +5,7 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.js"></script> 
   <script type="text/javascript" src="https://raw.github.com/ryanjarvinen/Eventbrite.jquery.js/master/Eventbrite.jquery.js"> </script>
   <script type="text/javascript">
+    var eb_events = {};
     $(document).ready(function(){
       // A helper for drawing lists based on API responses:
       Eventbrite.prototype.utils.list = function( selector, content_html, header_html ){
@@ -26,13 +27,14 @@
         content.find( ":jqmData(role=listview)" ).listview();
       }
 
+      // Using the Eventbrite OAuth2.0 login Widget to display the user's state -
       // for more information about how to use this widget see 
       // https://github.com/ryanjarvinen/Eventbrite.jquery.js/blob/master/OAUTH2-README.md
       Eventbrite.prototype.widget.login({
         'app_key': 'N2EzOTZjY2RmNTQz',
         'renderer': 'disabled',
       }, function(strings){
-        // A callback for work that needs to happen after we know the user's session state:
+        // A callback for work that needs to happen AFTER we know the state of the user's session:
 
         // Place the resulting Eventbrite login widget code somewhere on your page.
         // This example places the content into an element marked with class="eb_login_box"
@@ -66,7 +68,9 @@
         Eventbrite(function(eb){
           //Populate this user's event list -
           eb.user_list_events( {'do_not_display': "style,password,box_header_text_color,category,tags,tickets,link_color,box_background_color,box_border_color,timezone,description,background_color,text_color"}, function(response){
+            var events_html = '<div>No events were found for this account</div>';
             if(response['events'] !== undefined){
+              eb_events = response.events;
               var num = response.events.length;
               var evnt_list = ['<ul data-role="listview" data-theme="c">'];
               for(var x = 0; x < num; x +=1){
@@ -74,13 +78,12 @@
               }
               evnt_list.push( '</ul>' );
               evnts_html = evnt_list.join("\n");
-            }else{
-              events_html = '<div>No events were found for this account</div>';
             }
             eb.utils.list( '#events', evnts_html );
           });
           // Populate this user's list of organizer accounts - 
           eb.user_list_organizers( function(response){
+            var organizers_html = '<div>No organizer accounts were found for this user</div>';
             if(response['organizers'] !== undefined){
               var num = response.organizers.length;
               var organizer_list = ['<ul data-role="listview" data-theme="c">'];
@@ -90,31 +93,27 @@
                 if( org.name !== '' && org.name !== undefined ){
                   organizer_list.push('<li><a href="' + org.url + '">' + org.name + '</a></li>');
                 }else{ 
-                  organizer_list.push('<li><a href="'+ org.url +'"><i>Unnamed Organizer</i></a></li>');
+                  organizer_list.push('<li data-theme="d"><a href="'+ org.url +'"><i>Unnamed Organizer</i></a></li>');
                 }
               }
               organizer_list.push( '</ul>' );
               organizers_html = organizer_list.join("\n");
-            }else{
-              organizers_html = '<div>No organizer accounts were found for this user</div>';
             }
             eb.utils.list( '#organizers', organizers_html );
           });
           // Populate this users list of Tickets
           eb.user_list_tickets( function(response){
+            var tickets_html = '<div>No tickets were found for this user</div>';
             if(response['user_tickets'] !== undefined){
               var num = response.user_tickets[1].orders.length;
               var ticket_list = ['<ul data-role="listview" data-theme="c">'];
               var tckt = {};
               for(var x = 0; x < num; x +=1){
                 tckt = response.user_tickets[1].orders[x]['order'];
-                console.log(tckt);
                 ticket_list.push('<li><a href="http://www.eventbrite.com/orderconfirmation/' + tckt['event'].id + '/' + tckt.id + '">' + tckt['event'].title + '</a></li>'); 
               }
               ticket_list.push( '</ul>' );
               tickets_html = ticket_list.join("\n");
-            }else{
-              tickets_html = '<div>No tickets were found for this user</div>';
             }
             eb.utils.list( '#tickets', tickets_html );
           });
@@ -200,16 +199,14 @@
         <h1>My Tickets</h1>
     </div><!-- /header -->
     <div data-role="content">   
-        <p>Loading...</p>
+      <p>Loading...</p>
     </div><!-- /content -->
 </div><!-- /page -->
 
 <div id="setup" data-role="page">
-
     <div data-theme="b" data-iconpos="right" data-role="header">
-        <h1>Account Setup</h1>
+      <h1>Account Setup</h1>
     </div><!-- /header -->
-
     <div data-role="content">   
       <div class='ui-body ui-body-c eb_login_box'>
         <div class='eb_login_widget'>
@@ -230,17 +227,13 @@
         </div>
       </div>
     </div><!-- /content -->
-
 </div><!-- /page -->
 
 <div id="account" data-role="page">
-
     <div data-role="header">
         <a href="#home" data-rel="back" data-direction="reverse" data-role="button" data-theme="b" data-icon='arrow-l'>Back</a>
-        
         <h1>My Eventbrite Account</h1>
     </div><!-- /header -->
-
     <div data-role="content">   
       <div class='ui-body ui-body-c eb_login_box'>
         <div class='eb_login_widget'>
@@ -260,19 +253,14 @@
           </p>
         </div>
       </div>
-
     </div><!-- /content -->
-
 </div><!-- /page -->
 
 <div id="search" data-role="page">
-
     <div data-icon="search" data-iconpos="right" data-role="header">
         <a href="#home" data-rel="back" data-direction="reverse" data-role="button" data-theme="b" data-icon='arrow-l'>Back</a>
-        
         <h1>Find Events</h1>
     </div><!-- /header -->
-
     <div data-role="content">   
         <p><i>Coming Soon...</i></p>
     </div><!-- /content -->
