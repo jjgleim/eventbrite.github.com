@@ -60,8 +60,11 @@
               // Use jQuery to display the response data to the user
               // If you don't like the output, you can supply another function that will convert
               //  each event, into HTML..
-              $('#target').html( eb_client.utils.eventList( response, eb_client.utils.eventListRow ));
-
+              if( response.events !== undefined){
+                $('#target').html( eb_client.utils.eventList( response, eb_client.utils.eventListRow ));
+              }else{
+                $('#target').html( "No events were found for this organizer_id.");
+              }
             });
           });
           
