@@ -17,14 +17,11 @@
   <a href="http://developer.eventbrite.com/news/branding/"><img src="http://evbdn.eventbrite.com/s3-s3/static/images/django/logos/eb_powered.png"/></a>
 
   <div style="display:none;" id="dialog-form" title="API Credentials"> 
-    <p class="validateTips">Please enter your Eventbrite API authentication keys:</p> 
+    <p class="validateTips">Please enter your Eventbrite organizer id:</p> 
  
     <form> 
-      <label for="api_key"><a href="http://www.eventbrite.com/api/key/">api_key</a> (REQUIRED)</label> 
-      <input type="text" name="api_key" id="api_key" class="text ui-widget-content ui-corner-all" /> 
-      <br/>
-      <label for="user_key"><a href="http://www.eventbrite.com/myprofile/">organizer_id</a> (REQUIRED)</label> 
-      <input type="text" name="oganizer_id" id="organizer_id" value="" class="text ui-widget-content ui-corner-all" /> 
+      <label for="organizer_id"><a href="http://www.eventbrite.com/myprofile/">organizer_id</a> (REQUIRED)</label> 
+      <input type="text" name="oganizer_id" id="organizer_id" value="1764248895" class="text ui-widget-content ui-corner-all" /> 
     </form> 
   </div> 
 
@@ -53,7 +50,7 @@
           //---------------------------------------------------------------------------------------------//
 
           // Eventbrite Client interaction example
-          Eventbrite({'app_key':$('#api_key').val()}, function(eb_client){
+          Eventbrite({'app_key':'EHHWMU473LTVEO4JFY'}, function(eb_client){
             // parameters to pass to the API
             // See http://developer.eventbrite.com/doc/organizers/organizer_list_events/ for more info about this API call
             var params = {'id': $('#organizer_id').val() };
