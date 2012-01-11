@@ -53,7 +53,7 @@
           Eventbrite({'app_key':'EHHWMU473LTVEO4JFY'}, function(eb_client){
             // parameters to pass to the API
             // See http://developer.eventbrite.com/doc/organizers/organizer_list_events/ for more info about this API call
-            var params = {'id': $('#organizer_id').val() };
+            var params = {'id': $('#organizer_id').val(), 'status':'live,started' };
             // make a client request, provide a callback that will handle the response data
             eb_client.organizer_list_events( params, function(response){
 
